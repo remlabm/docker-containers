@@ -1,0 +1,5 @@
+dnsmasq:
+  build: ./
+#  dns: 127.0.0.1
+  expose:
+    - "53"

@@ -1,10 +1,9 @@
-openvpndnsmasq:
+openvpn:
   build: ./
   volumes_from:
-    - dmasq-data
     - ovpn-data
 #  dns: 127.0.0.1
   cap_add:
     - NET_ADMIN
-  ports :
+  ports:
     - "1194:1194"

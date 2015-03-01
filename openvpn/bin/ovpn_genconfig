@@ -168,7 +168,6 @@ group nogroup
 EOF
 
 [ -n "$OVPN_CLIENT_TO_CLIENT" ] && echo "client-to-client" >> "$conf"
-[ "$OVPN_DNS" == "1" ] && echo push "dhcp-option DNS 104.131.20.209" >> "$conf"
 [ "$OVPN_DNS" == "1" ] && echo push "dhcp-option DNS 8.8.4.4" >> "$conf"
 [ "$OVPN_DNS" == "1" ] && echo push "dhcp-option DNS 8.8.8.8" >> "$conf"
 # Append Routes

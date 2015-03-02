@@ -2,7 +2,6 @@ dnsmasq:
   build: ./
   volumes_from:
     - dmasq-data
-#  dns: 127.0.0.1
   expose:
     - "53/udp"
   ports:

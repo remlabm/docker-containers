@@ -2,14 +2,13 @@
 # http://www.htpcguides.com/install-plex-media-server-on-raspberry-pi-2/
 
 # Leaner build then Ubunutu
-FROM phusion/baseimage
+FROM resin/rpi-raspbian:wheezy
 
 MAINTAINER Mike Balmer <me@remlabm.com>
 
 RUN apt-get update && \
     apt-get install -y locales  && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 
 RUN dpkg-reconfigure locales && \
     locale-gen C.UTF-8 && \

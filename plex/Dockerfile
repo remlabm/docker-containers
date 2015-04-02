@@ -1,4 +1,5 @@
-# Original credit: https://github.com/jpetazzo/dockvpn
+# Original credit:
+# http://www.htpcguides.com/install-plex-media-server-on-raspberry-pi-2/
 
 # Leaner build then Ubunutu
 FROM phusion/baseimage
@@ -6,5 +7,20 @@ FROM phusion/baseimage
 MAINTAINER Mike Balmer <me@remlabm.com>
 
 RUN apt-get update && \
-    apt-get install -y openvpn iptables git-core dnsmasq dnsutils  && \
+    apt-get install -y locales  && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
+RUN dpkg-reconfigure locales && \
+    locale-gen C.UTF-8 && \
+    /usr/sbin/update-locale LANG=C.UTF-8
+
+ENV LC_ALL C.UTF-8
+
+ADD http://dev2day.de/plex-latest /
+RUN \
+  cd /usr/local/ && \
+  dpkg -i plex* && \
+  rm -f plexmediaserver_*.deb
+
+CMD ["bash"]

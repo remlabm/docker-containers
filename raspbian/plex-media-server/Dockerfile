@@ -16,9 +16,9 @@ RUN dpkg-reconfigure locales && \
 
 ENV LC_ALL C.UTF-8
 
-ADD http://dev2day.de/plex-latest /
+ADD http://dev2day.de/plex-latest /tmp
 RUN \
-  cd /usr/local/ && \
+  cd /tmp && \
   dpkg -i plex* && \
   rm -f plexmediaserver_*.deb
 

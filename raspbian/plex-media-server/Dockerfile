@@ -19,7 +19,12 @@ ENV LC_ALL C.UTF-8
 ADD http://dev2day.de/plex-latest /
 RUN \
   cd /usr/local/ && \
-  dpkg -i /plex* && \
-  rm -f /plexmediaserver_*.deb
+  dpkg -i /plex-latest && \
+  rm -f /plex-latest
 
-CMD ["bash"]
+VOLUME /config
+VOLUME /media
+
+EXPOSE 32400
+
+CMD ["start_pms"]

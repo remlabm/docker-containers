@@ -27,4 +27,17 @@ VOLUME /media
 
 EXPOSE 32400
 
+ENV PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS 6
+
+# ulimit -s $PLEX_MEDIA_SERVER_MAX_STACK_SIZE
+ENV PLEX_MEDIA_SERVER_MAX_STACK_SIZE 3000
+
+# location of configuration, default is
+# "${HOME}/Library/Application Support"
+ENV PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR /config
+
+ENV PLEX_MEDIA_SERVER_HOME /usr/lib/plexmediaserver
+ENV LD_LIBRARY_PATH /usr/lib/plexmediaserver
+ENV TMPDIR /tmp
+
 CMD ["start_pms"]

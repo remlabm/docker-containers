@@ -27,7 +27,7 @@ VOLUME /media
 
 EXPOSE 32400
 
-ENV HOME /usr/lib/plexmediaserver
+ENV HOME /config
 ENV TMPDIR /tmp
 
 CMD ["start_pms"]

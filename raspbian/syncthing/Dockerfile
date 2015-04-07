@@ -16,18 +16,16 @@ RUN dpkg-reconfigure locales && \
 
 ENV LC_ALL C.UTF-8
 
-ADD http://dev2day.de/plex-latest /
+
+ADD https://github.com/syncthing/syncthing/releases/download/v0.10.30/syncthing-linux-arm-v0.10.30.tar.gz /syncthing-latest.tar.gz
 RUN \
   cd /usr/local/ && \
-  dpkg -i /plex-latest && \
-  rm -f /plex-latest
+  tar xvzf /syncthing-latest.tar.gz && \
+  rm -f /syncthing-latest.tar.gz
 
 VOLUME /config
 VOLUME /media
 
-EXPOSE 22000
+EXPOSE 32400
 
-ENV HOME /config
-ENV TMPDIR /tmp
-
-CMD ["start_pms"]
+CMD ["syncthing"]

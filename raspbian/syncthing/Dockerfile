@@ -26,6 +26,6 @@ RUN \
 VOLUME /config
 VOLUME /media
 
-EXPOSE 32400
+EXPOSE 22000 8080 20125/udp
 
 CMD ["syncthing"]

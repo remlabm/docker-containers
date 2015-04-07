@@ -25,7 +25,7 @@ RUN \
 VOLUME /config
 VOLUME /media
 
-EXPOSE 22000
+EXPOSE 32400
 
 ENV HOME /config
 ENV TMPDIR /tmp

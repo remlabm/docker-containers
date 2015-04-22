@@ -15,13 +15,13 @@ RUN dpkg-reconfigure locales && \
 
 ENV LC_ALL C.UTF-8
 
-WORKDIR /opt
+WORKDIR /opt/aosp
 
-RUN cd /opt && \
+RUN cd /opt/aosp && \
     git clone https://android.googlesource.com/platform/system/core.git system/core && \
     git clone https://android.googlesource.com/platform/external/zlib.git external/zlib
 
-COPY adb /opt/system/core/adb
+COPY adb /opt/aosp/system/core/adb/Makefile
 
 RUN make adb
 

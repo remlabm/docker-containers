@@ -1,5 +1,4 @@
 # Original credit:
-# http://www.htpcguides.com/install-plex-media-server-on-raspberry-pi-2/
 
 # Leaner build then Ubunutu
 FROM resin/rpi-raspbian:wheezy

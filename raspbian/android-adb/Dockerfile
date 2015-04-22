@@ -21,7 +21,7 @@ RUN cd /opt/aosp && \
     git clone https://android.googlesource.com/platform/system/core.git system/core && \
     git clone https://android.googlesource.com/platform/external/zlib.git external/zlib
 
-ADD adb /opt/aosp/system/core/adb
+ADD adb /opt/aosp/system/core
 
 RUN make adb
 

@@ -23,7 +23,7 @@ RUN cd /opt/aosp && \
 
 COPY Makefile /opt/aosp/system/core/adb/Makefile
 
-RUN cd /opt/asop/system/core/adb && \
+RUN cd /opt/aosp/system/core/adb && \
     make adb
 
 VOLUME /media

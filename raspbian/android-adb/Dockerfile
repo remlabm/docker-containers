@@ -21,9 +21,10 @@ RUN cd /opt/aosp && \
     git clone https://android.googlesource.com/platform/system/core.git system/core && \
     git clone https://android.googlesource.com/platform/external/zlib.git external/zlib
 
-COPY adb /opt/aosp/system/core/adb/Makefile
+COPY Makefile /opt/aosp/system/core/adb/Makefile
 
-RUN make adb
+RUN cd /opt/asop/system/core/adb && \
+    make adb
 
 VOLUME /media
 

@@ -1,5 +1,5 @@
 # Original credit:
-
+# http://forum.xda-developers.com/showpost.php?p=55619695&postcount=70
 # Leaner build then Ubunutu
 FROM resin/rpi-raspbian:wheezy
 
@@ -21,7 +21,7 @@ RUN cd /opt/aosp && \
     git clone https://android.googlesource.com/platform/system/core.git system/core && \
     git clone https://android.googlesource.com/platform/external/zlib.git external/zlib
 
-COPY adb /opt/aosp/system/core/adb
+ADD adb /opt/aosp/system/core/adb
 
 RUN make adb
 

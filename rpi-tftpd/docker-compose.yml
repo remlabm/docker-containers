@@ -1,6 +1,6 @@
 tftpd:
   build: .
-  expose:
+  ports:
     - "69:69"
     - "69:69/udp"
   volumes:

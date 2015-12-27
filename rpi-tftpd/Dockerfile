@@ -1,6 +1,5 @@
 # Pull base image
-#FROM resin/rpi-raspbian:wheezy
-FROM phusion/baseimage:0.9.16
+FROM resin/rpi-raspbian:wheezy
 
 RUN groupadd -r tftp && useradd -r -g tftp tftp
 

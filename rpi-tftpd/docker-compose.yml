@@ -1,0 +1,9 @@
+tftpd:
+  build: .
+  expose:
+    - "69:69"
+    - "69:69/udp"
+  volumes:
+    - "/images:/images"
+
+

@@ -27,16 +27,8 @@ VOLUME ["/config", "/data"]
 ENV HOME=/config
 
 # Plex server port
-EXPOSE 32400
-EXPOSE 1900/udp
-EXPOSE 3005
-EXPOSE 5353/udp
-EXPOSE 8324
-EXPOSE 32410/udp
-EXPOSE 32412/udp
-EXPOSE 32413/udp
-EXPOSE 32414/udp
-EXPOSE 32469
+EXPOSE 32400 3005 8324 32469
+EXPOSE 1900/udp 5353/udp 32410/udp 32412/udp 32413/udp 32414/udp
 
 # Add a line to the Plex start.sh script to remove any
 # previous pid file found in the config dir. Plex wont

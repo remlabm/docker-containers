@@ -1,7 +1,7 @@
 # Original credit:
 # http://forum.xda-developers.com/showpost.php?p=55619695&postcount=70
 # Leaner build then Ubunutu
-FROM resin/rpi-raspbian:wheezy
+FROM resin/rpi-raspbian:jessie
 
 MAINTAINER Mike Balmer <me@remlabm.com>
 

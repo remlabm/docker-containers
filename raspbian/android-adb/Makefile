@@ -1,71 +1,16 @@
-SRCS+= adb.c
-SRCS+= adb_client.c
-SRCS+= commandline.c
-SRCS+= console.c
-SRCS+= file_sync_client.c
-SRCS+= fdevent.c
-SRCS+= get_my_path_linux.c
-SRCS+= services.c
-SRCS+= sockets.c
-SRCS+= transport.c
-SRCS+= transport_local.c
-SRCS+= transport_usb.c
-SRCS+= usb_linux.c
-SRCS+= usb_vendors.c
-SRCS+= adb_auth_host.c
+NAME = remlabm/rpi-adb
+VERSION = latest
 
-VPATH+= ../libcutils
-SRCS+= socket_inaddr_any_server.c
-SRCS+= socket_local_client.c
-SRCS+= socket_local_server.c
-SRCS+= socket_loopback_client.c
-SRCS+= socket_loopback_server.c
-SRCS+= socket_network_client.c
-SRCS+= load_file.c
+.PHONY: all build tag_latest release
 
-VPATH+= ../libzipfile
-SRCS+= centraldir.c
-SRCS+= zipfile.c
+all: build
 
-VPATH+= ../../../external/zlib/src
-SRCS+= adler32.c
-SRCS+= compress.c
-SRCS+= crc32.c
-SRCS+= deflate.c
-SRCS+= infback.c
-SRCS+= inffast.c
-SRCS+= inflate.c
-SRCS+= inftrees.c
-SRCS+= trees.c
-SRCS+= uncompr.c
-SRCS+= zutil.c
+build:
+	docker build -t $(NAME):$(VERSION) --rm .
 
-CPPFLAGS+= -DADB_HOST=1
-CPPFLAGS+= -DHAVE_FORKEXEC=1
-CPPFLAGS+= -DHAVE_SYMLINKS
-CPPFLAGS+= -DHAVE_TERMIO_H
-CPPFLAGS+= -DHAVE_OFF64_T
-CPPFLAGS+= -D_GNU_SOURCE
-CPPFLAGS+= -D_XOPEN_SOURCE
-CPPFLAGS+= -DWORKAROUND_BUG6558362
-CPPFLAGS+= -I.
-CPPFLAGS+= -I../include
-CPPFLAGS+= -I../../../external/zlib
+tag_latest:
+	docker tag -f $(NAME):$(VERSION) $(NAME):latest
 
-CFLAGS+= -O2 -g -Wall -Wno-unused-parameter
-#LDFLAGS= -static
-LIBS= -lrt -lpthread -lssl
-
-TOOLCHAIN=
-CC= $(TOOLCHAIN)gcc
-LD= $(TOOLCHAIN)gcc
-
-OBJS= $(SRCS:.c=.o)
-
-all: adb
-
-adb: $(OBJS)
-        $(LD) -o $@ $(LDFLAGS) $(OBJS) $(LIBS)
-
-clean:
-        rm -rf $(OBJS)
+release: tag_latest
+	@if ! docker images $(NAME) | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME) version $(VERSION) is not yet built. Please run 'make build'"; false; fi
+	docker push $(NAME)

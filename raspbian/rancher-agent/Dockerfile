@@ -1,4 +1,6 @@
-FROM ubuntu:14.04.3
+#FROM ubuntu:14.04.3
+FROM resin/rpi-raspbian:jessie
+
 RUN apt-get update && \
      apt-get install --no-install-recommends -y \
      arptables \
